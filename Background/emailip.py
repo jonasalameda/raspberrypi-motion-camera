@@ -1,38 +1,28 @@
 import socket
 import smtplib
-from email.MMEMultipart import MIMEMultipart
-from email.MIMEText import MIMEText
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.connect(("8.8.8.8", 80))
-print(s.getsockname()[])
+print(s.getsockname()[0])
 x = s.getsockname()[0]
 s.close()
 
 # put your address which should be your email address
-fromaddr = ""
+fromaddr = "motionsystemcamera@gmail.com"
 # put the receiving address
-toaddr = ""
+toaddr = "" # prompt user to write his address? Get his address somehwere?
 
-msg = MIMEMultiplart()
+msg = MIMEMultipart()
 msg['From'] = fromaddr
 msg['To'] = toaddr
-msg['Subject'] = "IP Address"
+msg['Subject'] = "Movement detected"
 
-body = xmsg.attach(MIMEText(body, 'plain'))
+# TODO: add link from home assistant to the video OR the actual video?
+body = x + msg.attach(MIMEText('plain'))
 server = smtplib.SMTP("smtp.gmail.com", 587)
 server.starttls()
-server.login(fromaddr, "password")
+server.login(fromaddr, "MotionPlusSecurity80")
+server.sendmail(fromaddr, toaddr, body)
 server.quit()
-
-sudo nano /etc/rc.local
-while ! /sbin/ifconfig wlan0 | grep -q 'inet addr:[0-9]';
-do sleep 3
-done
-
-_IP = $(hostname -l) || true
-if ["$_IP"]; then
-printf "my ip address is %s\n" "$_IP"
-python /home/jon/Background/emailip.py &
-fi
-exit 0
