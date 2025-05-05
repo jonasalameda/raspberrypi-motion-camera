@@ -1,0 +1,13 @@
+#!/bin/bash
+sudo apt update
+sudo apt upgrade
+# setting up dependencies
+sudo apt install autoconf automake build-essential pkgconf libtool git libzip-dev libjpeg-dev gettext libmicrohttpd-dev libavformat-dev libavcodec-dev libavutil-dev libswscale-dev libavdevice-dev default-libmysqlclient-dev libpq-dev libsqlite3-dev libwebp-dev libcamera-v4l2
+# download from github repo
+MOTION_VERSION=4.7.0
+wget https://github.com/Motion-Project/motion/releases/download/release-$MOTION_VERSION/$(lsb_release -cs)_motion_$MOTION_VERSION-1_$(dpkg --print-architecture).deb -O motion.deb
+sudo dpkg -i motion.deb
+# here instead of nano, just change the motion file to the modified one
+sudo \cp -rf ../motion.conf /etc/motion/
+sudo systemctl enable motion
+sudo systemctl start motion

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+sudo docker run -d \
+  --name homeassistant \
+  --privileged \
+  --restart=unless-stopped \
+  -e TZ=/etc/timezone \
+  -v /etc/HomeAssist:/config \
+  -v /run/dbus:/run/dbus:ro \
+  --network=host \
+  ghcr.io/home-assistant/home-assistant:stable
+
+sudo docker restart homeassistant
+
