@@ -6,16 +6,17 @@
 
 First, clone the repository in your desired repository
 
-git clone https://github.com/jonasalameda/raspberrypi-motion-camera.git
+git clone https://github.com/jonasalameda/raspberrypi-motion-camera.git <br>
 cd respberrypi-motion-camera
 
 ### For an automatic installation, follow the steps below
 
 Give permission to the files to be executed by you or anyone, if you want more control over the files   
-we recommend you use the recommended config, if you just want to execute it use the minimal config
+we recommend you use the recommended config, if you just want to execute it use the minimal config.
+Inside the RasbpiAutomations folder, execute one of the following commands:
 
-**recommended**: chmod 777 WebcamServer InstallHomeCore HomeAssistantContainer setup.sh
-**minimal**: chmod +x WebcamServer InstallHomeCore HomeAssistantContainer setup.sh
+**recommended**: chmod 777 WebcamServer SetupDocker HomeAssistantContainer <br>
+**minimal**: chmod +x WebcamServer SetupDocker HomeAssistantContainer
 
 In order to automatically setup your camera with home assistant you will need to run these files in order:
 
